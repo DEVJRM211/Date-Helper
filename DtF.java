@@ -1,9 +1,15 @@
-package com.example.typ1_jrm.SC;
-
+/*
+  This class is basically a calendar used for date ranges.
+  I use them in android projects.
+  I don't use Date,LocalDate,etc...because i like to write everything on my own.JK.
+  @DevJRM
+  
+*/
 import java.util.*;
 
 public class DtF {
 
+    //To get date range of current week (from Sunday to Saturday)
     public HashMap<String,String> f_Week() {
         HashMap<String, String> ro_Week = new HashMap<String, String>();
         ro_Week.put("sdt", f_PrevDt());
@@ -11,6 +17,7 @@ public class DtF {
         return ro_Week;
     }
 
+    //To get date range of  current month
     public HashMap<String,String> f_Month() {
         HashMap<String, String> ro_Month = new HashMap<String, String>();
         String v_SDT = f_DtHelper("CY") + "-" + f_DtHelper("CM") + "01";
@@ -19,14 +26,14 @@ public class DtF {
         ro_Month.put("edt", v_EDT);
         return ro_Month;
     }
-
+    //To get date range of current year (just because im lazy) 
     public HashMap<String,String> f_Year() {
         HashMap<String, String> ro_Year = new HashMap<String, String>();
         ro_Year.put("sdt", f_DtHelper("CY") + "-01-01");
         ro_Year.put("edt", f_DtHelper("CY") + "-12-31");
         return ro_Year;
     }
-
+    //To get start of the week
     String f_PrevDt() {
         int v_Day = Integer.parseInt(f_DtHelper("CD")),
                 v_Month = Integer.parseInt(f_DtHelper("CM")),
@@ -54,7 +61,7 @@ public class DtF {
         }
         return rv_Y + "-" + rv_M + "-" + rv_D;
     }
-
+    //To get end of the week
     String f_NextDt() {
         int v_Day = Integer.parseInt(f_DtHelper("CD")),
                 v_Month = Integer.parseInt(f_DtHelper("CM")),
@@ -83,6 +90,7 @@ public class DtF {
         return rv_Y + "-" + rv_M + "-" + rv_D;
     }
 
+    //weekday value
     int f_WeekRangeValue(int p_WeekDay) {
         switch (p_WeekDay) {
             case 1:
@@ -102,7 +110,7 @@ public class DtF {
         }
         return 0;
     }
-
+    //days in month
     int f_DaysInMonth(int p_Month) {
         if (p_Month == 2) {
             if (f_IsLeapYear(Integer.parseInt(f_DtHelper("CY"))) == 1) {
@@ -116,7 +124,7 @@ public class DtF {
             return 31;
         }
     }
-
+    //leap year 
     int f_IsLeapYear(int p_Year) {
         if (p_Year % 4 == 0) {
             if (p_Year % 100 == 0) {
@@ -133,6 +141,7 @@ public class DtF {
         }
     }
 
+    //get basic everything
     String f_DtHelper(String p_Type) {
         String rv_Value = "", v_Day = "", v_Month = "", v_Year = "";
         try {
