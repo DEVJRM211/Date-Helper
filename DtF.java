@@ -150,10 +150,10 @@ public class DtF {
                     rv_Value = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
                     break;
                 case "NY":
-                    rv_Value = String.valueOf(Calendar.getInstance().get(Calendar.YEAR + 1));
+                    rv_Value = String.valueOf(Calendar.getInstance().get(Calendar.YEAR)+1);
                     break;
                 case "CM":
-                    rv_Value = String.valueOf(Calendar.getInstance().get(Calendar.MONTH + 1));
+                    rv_Value = String.valueOf(Calendar.getInstance().get(Calendar.MONTH)+1);
                     break;
                 case "CD":
                     rv_Value = String.valueOf(Calendar.getInstance().get(Calendar.DATE));
